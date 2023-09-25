@@ -1,42 +1,30 @@
+# Import necessary libraries
 from product_rank_tracker import Scrape
-import time
 
-#MAKE SURE YOU TURN OFF THE DB FUNCTION
+# Constants
+KEYWORD_INPUT = ['candy']
+NUMBER_OF_PAGES = 10
 
-#inputs go here
-keyword_input = ['candy']
-number_of_pages = 10
+# Data preparation
 
-# Calculations
-actual_pages = number_of_pages + 1
-page_number_formatted = []
+# Adjust pages to cover the range
+actual_pages = NUMBER_OF_PAGES + 1
+
+# Lists to hold formatted data
 keyword_formatted = []
-results = []
+page_number_formatted = []
 
-#Data formatting
-
-#formatting the scrape pull
-for word in keyword_input:
-    for number in range(1,actual_pages):
-        keyword_formatted.append(word)
-
-for word in keyword_input:
+# Format keyword and page number data for scraping
+for word in KEYWORD_INPUT:
     for number in range(1, actual_pages):
+        keyword_formatted.append(word)
         page_number_formatted.append(number)
 
-formatted_data = list(zip(keyword_formatted,page_number_formatted))
+# Combine keyword and page number to use in scraping
+formatted_data = list(zip(keyword_formatted, page_number_formatted))
 
+# Scrape data using the provided formatted data
+results = []
 for searchTerm, pageNumber in formatted_data:
-    result = (Scrape(searchTerm, pageNumber))
-    
-
-    
-
-
-
- 
-        
-
-        
-
-
+    result = Scrape(searchTerm, pageNumber)
+    results.append(result)  # Assuming you want to store the result in a list
