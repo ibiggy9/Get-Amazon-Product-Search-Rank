@@ -1,3 +1,6 @@
+#This Code is for a one off search. 
+
+
 # Import necessary libraries
 from product_rank_tracker import Scrape
 
